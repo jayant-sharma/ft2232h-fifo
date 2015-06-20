@@ -1,4 +1,4 @@
-LABURL="https://gitlab.com/eda-developers/matrix.git"
+LABURL="https://gitlab.com/eda-developers/.git"
 HUBURL="https://github.com/jayant-sharma/ft2232h-fifo.git"
 
 if [[ $2 == 'lab' ]]
