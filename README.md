@@ -1,4 +1,4 @@
-This project contains files for implementing FT2232H and Synchronous FIFO for high speed USB transfer.
+This project contains files for implementing FT2232H (FT245 Synchronous and Asynchronous modes) and Synchronous FIFO for high speed USB transfer.
 
 Requirements:
 
