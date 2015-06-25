@@ -1,3 +1,4 @@
 ../simulation/testbench/TB_fifologic.v
-../hdl/FIFOlogic.v
+../hdl/FIFOlogicLUT.v
+../hdl/FIFOlogicGated.v
 

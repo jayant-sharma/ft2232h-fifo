@@ -1,6 +1,6 @@
 `timescale 100ps / 1ps
 
-module FIFOLOGIC (
+module FifoLogic_LUT (
    input clk,
    input FFA,
    input RXF,
