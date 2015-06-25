@@ -49,6 +49,7 @@ Thumbs.db
 result
 results.xml
 *.lxt
+*.vcd
 *.vvp
 doc/.ipynb_checkpoints/
 
