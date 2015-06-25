@@ -1,2 +1,0 @@
-TB_fifologic.v
-FIFOlogic.v
