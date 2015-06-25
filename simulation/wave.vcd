@@ -1,0 +1,186 @@
+$date
+	Thu Jun 25 12:31:41 2015
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_FIFOLOGIC $end
+$var wire 1 ! D1 $end
+$var wire 1 " D2 $end
+$var reg 1 # EFB $end
+$var reg 1 $ FFA $end
+$var reg 1 % RXF $end
+$var reg 1 & TXE $end
+$var reg 1 ' clk $end
+$scope module uut $end
+$var wire 1 ( EFB $end
+$var wire 1 ) EFB_N $end
+$var wire 1 * FFA $end
+$var wire 1 + FFA_N $end
+$var wire 1 , RXF $end
+$var wire 1 - TXE $end
+$var wire 1 . clk $end
+$var wire 1 / d1 $end
+$var wire 1 0 d2 $end
+$var wire 1 1 x1 $end
+$var wire 1 2 x1_n $end
+$var wire 1 3 x2 $end
+$var wire 1 4 x3 $end
+$var reg 1 5 D1 $end
+$var reg 1 6 D2 $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+x6
+x5
+x4
+x3
+x2
+x1
+x0
+x/
+0.
+0-
+0,
+x+
+0*
+z)
+0(
+0'
+0&
+0%
+0$
+0#
+x"
+x!
+$end
+#2800
+1)
+0+
+#5000
+1'
+1.
+#5600
+13
+01
+#6000
+1$
+1*
+1&
+1-
+#8400
+12
+#8500
+04
+#8800
+1+
+#10000
+0'
+0.
+#11000
+0$
+0*
+0&
+0-
+#11200
+1/
+#11300
+00
+#11600
+11
+#13800
+0+
+#14400
+02
+10
+#14500
+14
+#15000
+16
+1"
+15
+1!
+1'
+1.
+#16600
+01
+#19400
+12
+#19500
+04
+#20000
+0'
+0.
+#22300
+00
+#25000
+06
+0"
+1'
+1.
+#30000
+0'
+0.
+#35000
+1'
+1.
+#40000
+0'
+0.
+#45000
+1'
+1.
+#50000
+0'
+0.
+#55000
+1'
+1.
+#60000
+0'
+0.
+#65000
+1'
+1.
+#70000
+0'
+0.
+#75000
+1'
+1.
+#80000
+0'
+0.
+#85000
+1'
+1.
+#90000
+0'
+0.
+#95000
+1'
+1.
+#100000
+0'
+0.
+#105000
+1'
+1.
+#110000
+0'
+0.
+#115000
+1'
+1.
+#120000
+0'
+0.
+#125000
+1'
+1.
+#126000

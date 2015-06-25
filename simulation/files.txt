@@ -1,0 +1,3 @@
+../simulation/testbench/TB_fifologic.v
+../hdl/FIFOlogic.v
+
