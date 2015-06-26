@@ -50,6 +50,8 @@ result
 results.xml
 *.lxt
 *.vcd
+*.vcd*
+*.gtkw
 *.vvp
 doc/.ipynb_checkpoints/
 

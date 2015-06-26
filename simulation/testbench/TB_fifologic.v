@@ -38,15 +38,15 @@ initial begin
   
 	{FFA,EFB,RXF,TXE} = 4'b0000;
    #50  
+	{FFA,EFB,RXF,TXE} = 4'b0011;
+   #50
+	{FFA,EFB,RXF,TXE} = 4'b1001;
+   #440  
+	{FFA,EFB,RXF,TXE} = 4'b1011;
+   #490  
 	{FFA,EFB,RXF,TXE} = 4'b1001;
    #50
-/*	{FFA,EFB,RXF,TXE} = 4'b0000;
-   #50  
-	{FFA,EFB,RXF,TXE} = 4'b0000;
-   #50  
-	{FFA,EFB,RXF,TXE} = 4'b0000;
-   #50
-*/
+
    #5000
    $display("\nSimulation Finished");
    $finish;
