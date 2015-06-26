@@ -5,17 +5,21 @@ module tb_FIFOLOGIC;
 
 reg clk, clk60, clk120, tpulse;
 reg FFA, EFB, RXF, TXE;
-wire D1, D2;
+wire D1, D2, RD, WA, RB, WR;
 
 FifoLogic_Gated uut
 (
-   .clk(clk),
-   .FFA(FFA),
-   .RXF(RXF),
-   .TXE(TXE),
-   .EFB(EFB),
-   .D1(D1),
-   .D2(D2)
+   .clk	(tpulse),
+   .FFA	(FFA),
+   .RXF	(RXF),
+   .TXE	(TXE),
+   .EFB	(EFB),
+   .RD	(RD),
+   .WA	(WA),
+   .RB	(RB),
+   .WR	(WR),
+   .D1	(D1),
+   .D2	(D2)
 );
 
 initial begin
@@ -29,21 +33,21 @@ initial begin
    #10
    $display("\nSimulation Started...");
    #100
-   testALL();
-/*
+//   testALL();
+
   
 	{FFA,EFB,RXF,TXE} = 4'b0000;
    #50  
 	{FFA,EFB,RXF,TXE} = 4'b1001;
    #50
-	{FFA,EFB,RXF,TXE} = 4'b0000;
+/*	{FFA,EFB,RXF,TXE} = 4'b0000;
    #50  
 	{FFA,EFB,RXF,TXE} = 4'b0000;
    #50  
 	{FFA,EFB,RXF,TXE} = 4'b0000;
    #50
 */
-   #1000
+   #5000
    $display("\nSimulation Finished");
    $finish;
 end
@@ -59,12 +63,10 @@ task testALL;
    end   
 endtask
 
-always begin
-   #50 clk = ~clk;
-   #300 clk60 = ~clk60;
-   #600 clk120 = ~clk120;
-   tpulse = clk60 & clk120;
-end
+always #`timeperiodby2 clk = ~clk;
+always #300 clk60 = ~clk60;
+always #600 clk120 = ~clk120;
+always #1 tpulse = clk60 & clk120;
 
 endmodule
 
