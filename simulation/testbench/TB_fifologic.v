@@ -3,8 +3,9 @@
 
 module tb_FIFOLOGIC;
 
-reg clk, clk60, clk120, tpulse;
+reg clk, clk60, clk120;
 reg FFA, EFB, RXF, TXE;
+wire tpulse;
 wire D1, D2, RD, WA, RB, WR;
 
 FifoLogic_Gated uut
@@ -28,29 +29,97 @@ initial begin
 end
  
 initial begin
-   clk = 0; clk60 = 0; clk120 = 0; tpulse = 0;
-   FFA = 1'b0; EFB = 1'b0; RXF = 1'b0; TXE = 1'b0;
+   clk = 0; clk60 = 0; clk120 = 0;
+   {FFA,EFB,RXF,TXE} = 4'b0000;
    #10
    $display("\nSimulation Started...");
    #100
-//   testALL();
-
-  
-	{FFA,EFB,RXF,TXE} = 4'b0000;
-   #50  
-	{FFA,EFB,RXF,TXE} = 4'b0011;
-   #50
-	{FFA,EFB,RXF,TXE} = 4'b1001;
-   #440  
-	{FFA,EFB,RXF,TXE} = 4'b1011;
-   #490  
-	{FFA,EFB,RXF,TXE} = 4'b1001;
-   #50
+   
+   writeUSB_FM(60);
+   #1000
+   readUSB_FM(60);
+   //testALL();
 
    #5000
    $display("\nSimulation Finished");
    $finish;
 end
+
+task writeUSB_FM;
+   input [7:0] bytes;
+   reg [7:0] i;
+   begin
+      {FFA,EFB,RXF,TXE} = 4'b0011;
+      #2000 
+      for (i=0; i<(bytes/2)+1; i=i+1) begin
+	 if ( (i>(bytes/4-4)) && (i<(bytes/4+4)) ) begin
+	    {FFA,EFB,RXF,TXE} = 4'b0011;
+	    #1690; 
+	    {FFA,EFB,RXF,TXE} = 4'b0011;
+	    #330; 
+	 end
+	 else begin
+	    {FFA,EFB,RXF,TXE} = 4'b0110;
+	    #1690;  
+	    {FFA,EFB,RXF,TXE} = 4'b0111;
+	    #330; 
+	 end 
+      end
+   end
+endtask
+
+task readUSB_FM;
+   input [7:0] bytes;
+   reg [7:0] i;
+   begin
+      {FFA,EFB,RXF,TXE} = 4'b0011;
+      #2000 
+      for (i=0; i<(bytes/2)+1; i=i+1) begin 
+	 if ( (i>(bytes/4-4)) && (i<(bytes/4+4)) ) begin
+	    {FFA,EFB,RXF,TXE} = 4'b0001;
+	    #1690; 
+	    {FFA,EFB,RXF,TXE} = 4'b0001;
+	    #330; 
+	 end
+	 else begin
+	    {FFA,EFB,RXF,TXE} = 4'b1001;
+	    #1690; 
+	    {FFA,EFB,RXF,TXE} = 4'b1011;
+	    #330;  
+	 end  
+      end
+   end
+endtask
+
+task readUSB_UM;
+   input [7:0] bytes;
+   reg [7:0] i;
+   begin
+      {FFA,EFB,RXF,TXE} = 4'b0011;
+      #2000 
+      for (i=0; i<(bytes/2)+1; i=i+1) begin
+	 {FFA,EFB,RXF,TXE} = 4'b1101;
+	 #1690
+	 {FFA,EFB,RXF,TXE} = 4'b1111;
+	 #330;  
+      end
+   end
+endtask
+
+task writeUSB_UM;
+   input [7:0] bytes;
+   reg [7:0] i;
+   begin
+      {FFA,EFB,RXF,TXE} = 4'b1010;
+      #2000 
+      for (i=0; i<(bytes/2)+1; i=i+1) begin 
+	 {FFA,EFB,RXF,TXE} = 4'b1110;
+	 #1690  
+	 {FFA,EFB,RXF,TXE} = 4'b1111;
+	 #330;  
+      end
+   end
+endtask
 
 task testALL;
    reg [5:0] i;
@@ -66,7 +135,6 @@ endtask
 always #`timeperiodby2 clk = ~clk;
 always #300 clk60 = ~clk60;
 always #600 clk120 = ~clk120;
-always #1 tpulse = clk60 & clk120;
+assign tpulse = clk60 | clk120;
 
 endmodule
-

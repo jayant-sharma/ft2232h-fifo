@@ -17,7 +17,7 @@ module FifoLogic_Gated (
 assign #270 clk_27 = clk;
 assign #180 clk_45 = clk_27;
 
-assign #28 FFA_N = FFA;
+assign #28 FFA_N = ~FFA;
 assign #28 EFB_N = ~EFB;
 
 assign #28 x1 = RXF | FFA_N;
@@ -30,7 +30,7 @@ assign #28 d1 = x3 | x1_n;
 assign #28 d2 = x1 | x3;
 
 initial begin
-   D1 = 0; D2 = 0;
+   D1 = 1; D2 = 1;
 end
 
 always@(posedge clk_45) begin
@@ -38,9 +38,9 @@ always@(posedge clk_45) begin
    D2 <= d2;
 end
 
-assign RB = D1 ? clk : 1'b1;
-assign WR = D1 ? clk : 1'b1;
-assign RD = D2 ? clk : 1'b1;
-assign WA = D2 ? clk_27 : 1'b1;
+assign #20 RB = D1 ? 1'b1 : clk_27;
+assign #20 WR = D1 ? 1'b1 : clk;
+assign #20 RD = D2 ? 1'b1 : clk;
+assign #20 WA = D2 ? 1'b1 : clk;
 
 endmodule
