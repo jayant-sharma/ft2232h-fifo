@@ -1,3 +1,0 @@
-# run (in simulation/ directory):
-	iverilog -o ../simulation/<sim_filename.vvp> -c ../simulation/files.txt
-	vvp <sim_filename.vvp>

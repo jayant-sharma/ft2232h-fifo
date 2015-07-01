@@ -28,7 +28,6 @@ module ftAsyncMode #(
 reg [2:0] r15, r30;
 reg [2:0] w15, w30;
 reg [1:0] rd_state;
-reg [1:0] rd_state;
 
 parameter 
    RD_IDLE   = 0,
@@ -84,27 +83,7 @@ end
 // Asynchronous Write
 
 always@(negedge TXE_N or posedge clk) begin
-   if(!TXE_N) begin
-      rd_state <= ;
-   end
-   else begin
-      case(rd_state)
-	 WR_IDLE: begin
-	 end
-	 WR_FETCH: begin
-	    r15 <= r15 - 1;
-	    if(r15 == 1) begin
-	       rd_state <= RD_ACTIVE;
-	    end 
-	 end
-	 WR_ACTIVE: begin
-	    r30 <= r30 - 1;
-	    if(r30 == 1) begin
-	       rd_state <= RD_IDLE;
-	    end
-	 end
-      endcase
-   end
+  
 end
 
 
