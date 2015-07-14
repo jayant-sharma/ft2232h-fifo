@@ -11,22 +11,21 @@ HDL_DIR=../hdl
 SIMC=iverilog
 SIM_OPTS=-o
 
-vsim:
-	@mkdir -p $(SIM_DIR)/versim/sim_build
-# 	@find ../ -type f \( -iname "*.v" \) -fprint $(INC_DIR)/files.txt
-	@$(SIMC) $(SIM_OPTS) \
-	$(SIM_DIR)/versim/sim_build/vsim.vvp -c $(INC_DIR)/files.txt
-	@vvp $(SIM_DIR)/versim/sim_build/vsim.vvp
+vsim: $(SIM_DIR) $(INC_DIR) $(HDL_DIR)
+	@$(MAKE) -C $(SIM_DIR)/versim
 
-psim:
-	@cd $(SIM_DIR)/pysim
-	@make
-	@cd ../$(SIM_DIR)
+psim: $(SIM_DIR) $(INC_DIR) $(HDL_DIR)
+	@$(MAKE) -C $(SIM_DIR)/pysim
+
+inc:
+# 	@find ../ -type f \( -iname "*.v" \) -fprint $(INC_DIR)/files.txt
+	@python $(INC_DIR)/geninc.py "$(HDL_DIR)/"
 
 clean:
 	-@rm -rf $(SIM_DIR)/*/sim_build
 	-@find . -name "*.vvp" | xargs rm -rf
 	-@find . -name "*.pyc" | xargs rm -rf
 	-@find . -name "*.vcd" | xargs rm -rf
+	-@find . -name "*.lxt" | xargs rm -rf
 	-@find . -name "*.xml" | xargs rm -rf
 	-@find . -name "*.~" | xargs rm -rf

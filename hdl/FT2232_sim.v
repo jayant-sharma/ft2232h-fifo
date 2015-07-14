@@ -1,4 +1,4 @@
-`include "../include/incparams.vh"
+`include "../../include/incparams.vh"
 
 module FT2232_sim #(
    parameter DATA  = `DATA_BUS,

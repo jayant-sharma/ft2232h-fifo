@@ -1,2 +1,2 @@
-../hdl/FIFOlogicGated.v
-../simulation/versim/TB_fifologic.v
+../../hdl/FIFOlogicGated.v
+../../simulation/versim/TB_fifologic.v

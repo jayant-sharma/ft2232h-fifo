@@ -1,4 +1,4 @@
-`include "../include/incparams.vh"
+`include "../../include/incparams.vh"
 
 module tb_FIFOLOGIC;
 
@@ -23,7 +23,7 @@ FifoLogic_Gated uut
 );
 
 initial begin
-   $dumpfile("../simulation/versim/waveGated.vcd");
+   $dumpfile("../../simulation/versim/waveGated.vcd");
    $dumpvars(0,tb_FIFOLOGIC);
 end
  

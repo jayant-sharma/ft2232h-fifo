@@ -1,4 +1,4 @@
-`include "../include/incparams.vh"
+`include "../../include/incparams.vh"
 
 module dp_sync_fifo #(
    parameter WIDTH  = 64,

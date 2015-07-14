@@ -1,4 +1,4 @@
-
+`include "../../include/incparams.vh"
 
 module spram #(
    parameter DATA = 16,
@@ -14,11 +14,15 @@ module spram #(
 
 reg [DATA-1:0] mem [0:2**ADDR-1];
 
-always @(posedge clk) begin
+initial
+   dout <= 0;
+
+always@(posedge clk) begin
+   dout <= mem[addr];
    if (we) begin
       mem[addr] <= din;
+      //dout <= din;
    end
-   dout <= mem[addr];
 end
 
 endmodule
