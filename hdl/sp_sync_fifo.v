@@ -34,7 +34,7 @@ end
 ////////////////////////////////////////////////////////////////////////////
 // FIFO STATUS
 ////////////////////////////////////////////////////////////////////////////
-assign empty  = (wr_ptr == rd_ptr);                   
+assign empty  = (wr_ptr == rd_ptr);
 assign full   = ( (wr_ptr[AWIDTH] != rd_ptr[AWIDTH])       &&
                   (wr_ptr[AWIDTH-1:0] == rd_ptr[AWIDTH-1:0]) );
 
